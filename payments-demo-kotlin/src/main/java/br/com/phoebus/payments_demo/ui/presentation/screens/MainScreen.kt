@@ -2,9 +2,6 @@ package br.com.phoebus.payments_demo.ui.presentation.screens
 
 import android.content.Context
 import android.provider.Settings
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -12,7 +9,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -82,7 +78,9 @@ fun MainScreen(navController: NavController, context: Context) {
             ActionCard(icon = Icons.Outlined.PhonelinkErase, title = "Limpar dados") {
                 EraseContent(context = context, navController = navController)
             }
-
+            ActionCard(icon = Icons.Outlined.Flag, title = "Inicializar") {
+                InitializationContent(context)
+            }
         }
     }
 }

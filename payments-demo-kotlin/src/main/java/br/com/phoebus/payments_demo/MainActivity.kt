@@ -28,7 +28,6 @@ import br.com.phoebus.payments.tef.request.AppCredentials
 import br.com.phoebus.payments.tef.request.AppIdentification
 import br.com.phoebus.payments.tef.request.BasicRequest
 import br.com.phoebus.payments_demo.ui.presentation.navigation.Navigation
-import br.com.phoebus.payments_demo.ui.presentation.screens.BiometricConfigScreen
 import br.com.phoebus.payments_demo.ui.presentation.screens.LoginScreen
 import br.com.phoebus.payments_demo.ui.presentation.screens.MainScreen
 import br.com.phoebus.payments_demo.ui.presentation.screens.SplashScreen
