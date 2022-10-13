@@ -20,34 +20,41 @@ import br.com.phoebus.payments_demo.ui.viewmodels.PurchaseViewModel
 import br.com.phoebus.payments_demo.ui.viewmodels.RefundViewModel
 import br.com.phoebus.payments_demo.utils.Identification
 import java.math.BigDecimal
+import java.text.NumberFormat
+import java.util.*
 
 @Composable
 fun PaymentContent(context: Context) {
 
-    val purchaseViewModel = viewModel<PurchaseViewModel>()
     var inputCaptureValue by rememberSaveable { mutableStateOf("") }
+    val locale = Locale("pt", "BR")
+    val currency = Currency.getInstance(locale)
+    val cleanString = inputCaptureValue.replace("[${currency.symbol},.]".toRegex(), "")
+    val parsed = if (cleanString.isNotEmpty()) {
+        cleanString.filter { !it.isWhitespace() }.toDouble()
+    } else {
+        0.00
+    }
+    val formatted = NumberFormat.getCurrencyInstance(locale).format(parsed / 100)
+
+    val purchaseViewModel = viewModel<PurchaseViewModel>()
     var validCaptureValue by rememberSaveable { mutableStateOf(false) }
     val refundViewModel = viewModel<RefundViewModel>()
     val refreshPayments: () -> Unit = {
         refundViewModel.getItemsFinancialData()
     }
 
-    Column(modifier = Modifier.wrapContentHeight(),
-        Arrangement.spacedBy(15.dp)) {
+    Column(
+        modifier = Modifier.wrapContentHeight(),
+        Arrangement.spacedBy(15.dp)
+    ) {
         OutlinedTextField(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 15.dp),
-            value = inputCaptureValue,
-            placeholder = {
-                Text(text = "0,00")
-            },
+            value = formatted,
             onValueChange = {
-                inputCaptureValue = if (it.startsWith("0")) {
-                    ""
-                } else {
-                    it
-                }
+                inputCaptureValue = it
                 validCaptureValue = false
             },
             label = {
@@ -71,7 +78,7 @@ fun PaymentContent(context: Context) {
                     actionPayment(
                         context,
                         purchaseViewModel,
-                        inputCaptureValue,
+                        cleanString.filter { !it.isWhitespace() },
                         success = {
                             null
                         },
@@ -107,7 +114,7 @@ private fun actionPayment(
 ) {
     System.updateDeviceInfo(context)
     purchaseViewModel.paymentExecute(
-        value.toBigDecimal().multiply(BigDecimal(100)).toLong(),
+        value.toBigDecimal().toLong(),
         sucess = {
             UI.approvedScreen(
                 context,

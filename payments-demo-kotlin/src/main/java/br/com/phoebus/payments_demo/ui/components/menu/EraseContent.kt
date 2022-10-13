@@ -66,7 +66,7 @@ private fun actionResetData(
                         "Finalizado",
                         Toast.LENGTH_SHORT
                     ).show()
-                    navController.navigate(Navigation.MainScreen.route)
+                    navController.navigate(Navigation.LoginScreen.route)
                 }
             }
         },

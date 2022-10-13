@@ -139,9 +139,7 @@ class MainActivity : FragmentActivity() {
                 ) {
                     composable(Navigation.Splash.route) {
                         SplashScreen {
-                            if (checkForRequiredPermissions()) {
                                 mainDecision()
-                            }
                         }
                     }
                     composable(Navigation.MainScreen.route) {
@@ -162,6 +160,7 @@ class MainActivity : FragmentActivity() {
                 navController!!.navigate(Navigation.MainScreen.route)
             },
             installStatus = {
+                checkForRequiredPermissions()
                 navController!!.navigate(Navigation.LoginScreen.route)
             },
             fail = { code, message ->

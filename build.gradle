@@ -28,7 +28,7 @@ allprojects {
         gmsPlayServicesVersion = '18.0.0'
         berTlvVersion = '0.1.8'
         apiVersionName = "1.0.0"
-        libraryBaseName = "phoebus-payments"
+        libraryBaseName = "phoebus-tapstore"
     }
 
 }
