@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -21,6 +22,8 @@ fun RefunContent(context: Context) {
 
     val refundViewModel = viewModel<RefundViewModel>()
     val purchaseViewModel = viewModel<PurchaseViewModel>()
+
+    refundViewModel.getItemsFinancialData()
 
     LazyColumn(
         modifier = Modifier.height(350.dp),

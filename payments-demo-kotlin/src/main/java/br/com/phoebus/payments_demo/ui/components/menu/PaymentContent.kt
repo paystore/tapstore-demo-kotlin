@@ -40,9 +40,8 @@ fun PaymentContent(context: Context) {
     val purchaseViewModel = viewModel<PurchaseViewModel>()
     var validCaptureValue by rememberSaveable { mutableStateOf(false) }
     val refundViewModel = viewModel<RefundViewModel>()
-    val refreshPayments: () -> Unit = {
-        refundViewModel.getItemsFinancialData()
-    }
+
+
 
     Column(
         modifier = Modifier.wrapContentHeight(),
@@ -88,7 +87,6 @@ fun PaymentContent(context: Context) {
                         finalize = {
                             null
                         },
-                        refreshPayments
                     )
                 }
 
