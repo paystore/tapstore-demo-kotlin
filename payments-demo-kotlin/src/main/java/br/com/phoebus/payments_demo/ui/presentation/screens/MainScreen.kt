@@ -68,7 +68,7 @@ fun MainScreen(navController: NavController, context: Context) {
             ActionCard(icon = Icons.Outlined.Person, title = "Dados do Lojista") {
                 merchantContent()
             }
-            ActionCard(icon = Icons.Outlined.CreditCard, title = "Pagamento NFC") {
+            ActionCard(icon = Icons.Outlined.CreditCard, title = "Pagamento por Aproximação") {
                 PaymentContent(context = context)
             }
             ActionCard(icon = Icons.Outlined.Update, title = "Estorno") {
@@ -77,7 +77,7 @@ fun MainScreen(navController: NavController, context: Context) {
             ActionCard(icon = Icons.Outlined.Language, title = "Teste de Comunicação") {
                 HealthTestContent()
             }
-            ActionCard(icon = Icons.Outlined.ColorLens, title = "Customização") {
+            ActionCard(icon = Icons.Outlined.ColorLens, title = "UI/UX") {
                 Customization(navController, context)
             }
             ActionCard(icon = Icons.Outlined.PhonelinkErase, title = "Limpar dados") {

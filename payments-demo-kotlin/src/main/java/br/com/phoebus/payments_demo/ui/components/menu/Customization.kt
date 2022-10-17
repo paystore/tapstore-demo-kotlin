@@ -51,7 +51,6 @@ fun Customization(navController: NavController , context: Context) {
                 .padding(vertical = 15.dp),
             controller = controller,
             onColorChanged = {
-                Color.primary = it.color
             }
         )
         BrightnessSlider(
@@ -80,6 +79,7 @@ fun Customization(navController: NavController , context: Context) {
                     onBackground = Color.onBackground,
                     onError = Color.onError
                 ), Identification.basicRequest, BuildConfig.BUILD_TYPE)
+                Color.primary = controller.selectedColor.value
                 navController.navigate(Navigation.MainScreen.route)
             },
             colors = ButtonDefaults.buttonColors(
