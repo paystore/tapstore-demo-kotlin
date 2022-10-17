@@ -10,7 +10,7 @@ import br.com.phoebus.payments.tef.enumeration.ApplicationStatus
 import br.com.phoebus.payments.tef.Config
 import br.com.phoebus.payments.tef.System
 import br.com.phoebus.payments.ui.UI
-import br.com.phoebus.payments_demo.ui.theme.MainPallete
+import br.com.phoebus.payments_demo.ui.theme.Color
 import br.com.phoebus.payments_demo.utils.Identification
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +25,7 @@ class SystemViewModel(application: Application) : AndroidViewModel(application) 
         installStatus: () -> Unit,
         fail: (code: String, message: String) -> Unit
     ) {
-        UI.init(context, MainPallete, Identification.basicRequest, BuildConfig.BUILD_TYPE)
+        UI.init(context, Color.MainPallete, Identification.basicRequest, BuildConfig.BUILD_TYPE)
 
         val response = System.init(Identification.basicRequest, context)
 

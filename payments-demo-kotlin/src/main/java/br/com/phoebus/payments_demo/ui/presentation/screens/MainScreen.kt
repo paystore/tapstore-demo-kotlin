@@ -15,6 +15,7 @@ import androidx.navigation.NavController
 import br.com.phoebus.payments.tef.BuildConfig
 import br.com.phoebus.payments_demo.ui.components.ActionCard
 import br.com.phoebus.payments_demo.ui.components.menu.*
+import br.com.phoebus.payments_demo.ui.theme.Color
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -35,6 +36,7 @@ fun MainScreen(navController: NavController, context: Context) {
         topBar = {
             TopAppBar(
                 title = { Text("Demo") },
+                backgroundColor = Color.primary
             )
         },
         bottomBar = {
@@ -74,6 +76,9 @@ fun MainScreen(navController: NavController, context: Context) {
             }
             ActionCard(icon = Icons.Outlined.Language, title = "Teste de Comunicação") {
                 HealthTestContent()
+            }
+            ActionCard(icon = Icons.Outlined.ColorLens, title = "Customização") {
+                Customization(navController, context)
             }
             ActionCard(icon = Icons.Outlined.PhonelinkErase, title = "Limpar dados") {
                 EraseContent(context = context, navController = navController)

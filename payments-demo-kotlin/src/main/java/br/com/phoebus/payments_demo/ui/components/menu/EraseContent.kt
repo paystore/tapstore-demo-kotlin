@@ -18,6 +18,7 @@ import androidx.navigation.NavController
 import br.com.phoebus.payments.mobile.presentation.viewmodels.SystemViewModel
 import br.com.phoebus.payments.ui.UI
 import br.com.phoebus.payments_demo.ui.presentation.navigation.Navigation
+import br.com.phoebus.payments_demo.ui.theme.Color
 import br.com.phoebus.payments_demo.utils.Identification
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +44,7 @@ fun EraseContent(context: Context, navController: NavController) {
             )
         },
         colors = ButtonDefaults.buttonColors(
-            MaterialTheme.colors.primary,
+            Color.primary,
             MaterialTheme.colors.onPrimary
         )
     ) {

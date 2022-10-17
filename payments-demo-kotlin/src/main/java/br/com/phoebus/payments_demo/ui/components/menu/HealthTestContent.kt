@@ -54,7 +54,7 @@ fun HealthTestContent() {
                 }
             },
             colors = ButtonDefaults.buttonColors(
-                MaterialTheme.colors.primary,
+                br.com.phoebus.payments_demo.ui.theme.Color.primary,
                 MaterialTheme.colors.onPrimary
             )
         ) {
@@ -76,7 +76,7 @@ fun testConnection(title: String, done: Boolean?, loading: Boolean) {
                 .padding(bottom = 15.dp)
                 .height(60.dp), shape = RoundedCornerShape(10.dp),
             color = Color(0xFFF7F7F7),
-            border = BorderStroke(2.dp, MaterialTheme.colors.primary)
+            border = BorderStroke(2.dp, br.com.phoebus.payments_demo.ui.theme.Color.primary)
         ) {
             Row(
                 modifier = Modifier

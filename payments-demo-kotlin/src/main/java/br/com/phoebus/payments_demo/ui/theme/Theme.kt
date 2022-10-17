@@ -11,7 +11,7 @@ fun MainTheme(
     content: @Composable () -> Unit
 ) {
     MaterialTheme(
-        colors = MainPallete,
+        colors = Color.MainPallete,
         typography = Typography(),
         shapes = Shapes(),
         content = content

@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.phoebus.payments.ui.UI
+import br.com.phoebus.payments_demo.ui.theme.Color
 import br.com.phoebus.payments_demo.ui.viewmodels.AdminViewModel
 import br.com.phoebus.payments_demo.ui.viewmodels.MerchantViewModel
 import br.com.phoebus.payments_demo.utils.Identification
@@ -31,7 +32,7 @@ fun InitializationContent(context: Context) {
                 adminViewModel = adminViewModel)
         },
         colors = ButtonDefaults.buttonColors(
-            MaterialTheme.colors.primary,
+            Color.primary,
             MaterialTheme.colors.onPrimary
         )
     ) {

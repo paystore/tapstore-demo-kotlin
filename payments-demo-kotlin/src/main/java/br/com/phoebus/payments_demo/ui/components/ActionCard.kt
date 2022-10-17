@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import br.com.phoebus.payments_demo.ui.theme.Color
 
 @Composable
 fun ActionCard(icon: ImageVector, title: String, content: @Composable () -> Unit) {
@@ -27,7 +28,7 @@ fun ActionCard(icon: ImageVector, title: String, content: @Composable () -> Unit
             .padding(horizontal = 15.dp)
             .wrapContentHeight()
             .fillMaxWidth(),
-        border = BorderStroke(2.dp, MaterialTheme.colors.primary),
+        border = BorderStroke(2.dp, Color.primary),
         backgroundColor = MaterialTheme.colors.background
     ) {
         Column() {
@@ -40,7 +41,7 @@ fun ActionCard(icon: ImageVector, title: String, content: @Composable () -> Unit
                     .padding(15.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Icon(imageVector = icon, contentDescription = title)
+                Icon(imageVector = icon, contentDescription = title, tint = Color.primary)
                 Text(text = title)
                 Icon(imageVector = Icons.Outlined.ExpandMore, contentDescription = "Expand")
             }

@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.phoebus.payments.tef.System
 import br.com.phoebus.payments.ui.UI
+import br.com.phoebus.payments_demo.ui.theme.Color
 import br.com.phoebus.payments_demo.ui.viewmodels.PurchaseViewModel
 import br.com.phoebus.payments_demo.ui.viewmodels.RefundViewModel
 import br.com.phoebus.payments_demo.utils.Identification
@@ -64,8 +65,8 @@ fun PaymentContent(context: Context) {
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                MaterialTheme.colors.primary,
-                focusedBorderColor = MaterialTheme.colors.primaryVariant
+                Color.primary,
+                focusedBorderColor = Color.primaryVariant
             )
         )
         Button(
@@ -92,7 +93,7 @@ fun PaymentContent(context: Context) {
 
             },
             colors = ButtonDefaults.buttonColors(
-                MaterialTheme.colors.primary,
+                Color.primary,
                 MaterialTheme.colors.onPrimary
             )
         ) {
