@@ -22,7 +22,7 @@ import com.github.skydoves.colorpicker.compose.HsvColorPicker
 import com.github.skydoves.colorpicker.compose.rememberColorPickerController
 
 @Composable
-fun Customization(navController: NavController , context: Context) {
+fun Customization(navController: NavController, context: Context) {
 
     val controller = rememberColorPickerController()
 
@@ -65,20 +65,27 @@ fun Customization(navController: NavController , context: Context) {
                 .height(50.dp),
             onClick = {
                 UI.finish()
-                UI.init(context, lightColors(
-                    primary = Color.primary,
-                    primaryVariant = Color.primaryVariant,
-                    onPrimary = Color.onPrimary,
-                    secondary = Color.secondary,
-                    secondaryVariant = Color.secondaryVariant,
-                    onSecondary = Color.onSecondary,
-                    surface = Color.surface,
-                    onSurface = Color.onSurface,
-                    error = Color.error,
-                    background = Color.background,
-                    onBackground = Color.onBackground,
-                    onError = Color.onError
-                ), Identification.basicRequest, BuildConfig.BUILD_TYPE)
+                UI.init(
+                    context,
+                    lightColors(
+                        primary = Color.primary,
+                        primaryVariant = Color.primaryVariant,
+                        onPrimary = Color.onPrimary,
+                        secondary = Color.secondary,
+                        secondaryVariant = Color.secondaryVariant,
+                        onSecondary = Color.onSecondary,
+                        surface = Color.surface,
+                        onSurface = Color.onSurface,
+                        error = Color.error,
+                        background = Color.background,
+                        onBackground = Color.onBackground,
+                        onError = Color.onError
+                    ),
+                    Color.primary,
+                    Color.primary,
+                    Identification.basicRequest,
+                    BuildConfig.BUILD_TYPE
+                )
                 Color.primary = controller.selectedColor.value
                 navController.navigate(Navigation.MainScreen.route)
             },

@@ -1,10 +1,11 @@
 package br.com.phoebus.payments_demo.ui.viewmodels
 
 import android.app.Application
+import android.content.Context
 import br.com.phoebus.payments.core.financial.Financial
 import br.com.phoebus.payments.core.payment.CancelRequestData
 import br.com.phoebus.payments.core.payment.PaymentRequestData
-import br.com.phoebus.payments.core.prototype.PlatformLog
+import br.com.phoebus.payments.platform.PlatformLog
 import br.com.phoebus.payments.tef.enumeration.OperationResultEnum
 import br.com.phoebus.payments.tef.Purchase
 import br.com.phoebus.payments.tef.request.CancelPendingRequest
@@ -26,6 +27,7 @@ class PurchaseViewModel(
 ) : GenericViewModel(application) {
 
     fun paymentExecute(
+        context: Context,
         value: Long,
         sucess: ((payment: Payment) -> Unit)? = null,
         fail: ((code: String, message: String) -> Unit)? = null,
@@ -35,6 +37,7 @@ class PurchaseViewModel(
         CoroutineScope(Dispatchers.Default).launch {
             try {
                 val responsePayment: PaymentResponse = Purchase.paymentExecute(
+                    context = context,
                     PaymentRequest(
                         appIdentification,
                         appCredentials,
@@ -92,6 +95,7 @@ class PurchaseViewModel(
     }
 
     fun cancelExecute(
+        context: Context,
         payment: Financial,
         sucess: ((cancel: Cancel) -> Unit)? = null,
         fail: ((code: String, message: String) -> Unit)? = null,
@@ -101,6 +105,7 @@ class PurchaseViewModel(
         CoroutineScope(Dispatchers.Default).launch {
             try {
                 val responseCancel: CancelResponse = Purchase.cancelExecute(
+                    context = context,
                     CancelRequest(
                         appIdentification,
                         appCredentials,

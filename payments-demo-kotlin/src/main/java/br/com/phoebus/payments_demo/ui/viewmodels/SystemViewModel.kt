@@ -2,6 +2,7 @@ package br.com.phoebus.payments.mobile.presentation.viewmodels
 
 import android.app.Application
 import android.content.Context
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.AndroidViewModel
 import br.com.phoebus.payments.tef.BuildConfig
 import br.com.phoebus.payments.tef.request.BasicRequest
@@ -9,8 +10,9 @@ import br.com.phoebus.payments.tef.enumeration.OperationResultEnum
 import br.com.phoebus.payments.tef.enumeration.ApplicationStatus
 import br.com.phoebus.payments.tef.Config
 import br.com.phoebus.payments.tef.System
+import br.com.phoebus.payments.tef.request.SystemInitRequest
 import br.com.phoebus.payments.ui.UI
-import br.com.phoebus.payments_demo.ui.theme.Color
+import br.com.phoebus.payments_demo.ui.theme.Color.MainPallete
 import br.com.phoebus.payments_demo.utils.Identification
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,9 +27,20 @@ class SystemViewModel(application: Application) : AndroidViewModel(application) 
         installStatus: () -> Unit,
         fail: (code: String, message: String) -> Unit
     ) {
-        UI.init(context, Color.MainPallete, Identification.basicRequest, BuildConfig.BUILD_TYPE)
+        UI.init(
+            context,
+            MainPallete,
+            br.com.phoebus.payments_demo.ui.theme.Color.primary,
+            br.com.phoebus.payments_demo.ui.theme.Color.primary,
+            Identification.basicRequest,
+            BuildConfig.BUILD_TYPE
+        )
 
-        val response = System.init(Identification.basicRequest, context)
+        val response = System.init(
+            SystemInitRequest(
+            appCredentials = Identification.appCredentials,
+            appIdentification = Identification.appIdentification
+        ), context)
 
         if (response.result == OperationResultEnum.SUCCESS) {
             Config.setPayStoreUrl(Identification.basicRequest, "http://177.69.97.18:6632")
@@ -58,7 +71,10 @@ class SystemViewModel(application: Application) : AndroidViewModel(application) 
 
                 if (response.result == OperationResultEnum.SUCCESS) {
                     System.finish(Identification.basicRequest)
-                    System.init(Identification.basicRequest, context)
+                    System.init(SystemInitRequest(
+                        appCredentials = Identification.appCredentials,
+                        appIdentification = Identification.appIdentification
+                    ), context)
 
                     if (response.result == OperationResultEnum.SUCCESS) {
                         Config.setPayStoreUrl(

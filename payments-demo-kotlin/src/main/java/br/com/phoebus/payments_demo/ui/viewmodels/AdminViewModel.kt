@@ -57,7 +57,7 @@ class AdminViewModel(
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.Default) {
                 handleResult(
-                    Admin.initialize(
+                    Admin.initialize(context,
                     InitializationRequest(
                         appIdentification,
                         appCredentials
@@ -70,7 +70,7 @@ class AdminViewModel(
     fun instalation(sucess: (() -> Unit)? = null, fail: ((code: String, message: String) -> Unit)? = null, captureToken: () -> Unit, token: String = "") {
         CoroutineScope(Dispatchers.Default).launch {
             handleResult(
-                Admin.installation(
+                Admin.installation(context,
                 InstallationRequest(
                     appIdentification,
                     appCredentials,

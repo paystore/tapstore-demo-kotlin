@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import br.com.phoebus.payments.tef.BuildConfig
+import br.com.phoebus.payments_demo.BuildConfig.apiVersionName
 import br.com.phoebus.payments_demo.ui.components.ActionCard
 import br.com.phoebus.payments_demo.ui.components.menu.*
 import br.com.phoebus.payments_demo.ui.theme.Color
@@ -46,7 +47,7 @@ fun MainScreen(navController: NavController, context: Context) {
                     .fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(2.dp)
             ) {
-                Text(text = "Versão da api: ${BuildConfig.apiVersionName}")
+                Text(text = "Versão da api: $apiVersionName")
                 Text(
                     text = "ID do dispositivo: ${
                         Settings.Secure.getString(

@@ -19,7 +19,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.FragmentActivity
-import br.com.phoebus.payments.core.prototype.Platform
+import br.com.phoebus.payments.platform.Platform
 import br.com.phoebus.payments.ui.components.BasicView
 import br.com.phoebus.payments.ui.enums.HeaderTypeEnum
 import br.com.phoebus.payments_demo.ui.theme.MainTheme

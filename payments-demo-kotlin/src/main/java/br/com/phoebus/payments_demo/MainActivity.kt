@@ -20,7 +20,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import br.com.phoebus.payments.core.prototype.Platform
+import br.com.phoebus.payments.platform.Platform
 import br.com.phoebus.payments.core.util.BiometricStatus
 import br.com.phoebus.payments.core.util.BiometricUtil
 import br.com.phoebus.payments.mobile.presentation.viewmodels.SystemViewModel
