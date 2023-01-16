@@ -12,6 +12,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+        buildConfigField "String", "apiVersionName", "\"$project.ext.apiVersionName\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
@@ -47,9 +48,11 @@ android {
 
 dependencies {
 
-    debugImplementation files("libs/${project.ext.libraryBaseName}-api-v${project.ext.apiVersionName}-debug.aar")
+    debugImplementation files("libs/${project.ext.libraryName}-v${project.ext.apiVersionName}-release.aar")
+    debugImplementation files("libs/${project.ext.libraryName}-ui-v${project.ext.apiVersionName}-release.aar")
 
-    debugImplementation files("libs/${project.ext.libraryBaseName}-ui-v${project.ext.apiVersionName}-debug.aar")
+    releaseImplementation files("libs/${project.ext.libraryName}-v${project.ext.apiVersionName}-release.aar")
+    releaseImplementation files("libs/${project.ext.libraryName}-ui-v${project.ext.apiVersionName}-release.aar")
 
     implementation "androidx.appcompat:appcompat:1.4.2"
     implementation 'androidx.core:core-ktx:1.8.0'
