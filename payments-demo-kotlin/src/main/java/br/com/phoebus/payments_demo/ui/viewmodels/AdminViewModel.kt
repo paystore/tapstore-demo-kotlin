@@ -11,10 +11,8 @@ import br.com.phoebus.payments.paystore.rest.PayStoreRespApiError
 import br.com.phoebus.payments.phast.PhastModuleService
 import br.com.phoebus.payments.phast.rest.PhastRespApiError
 import br.com.phoebus.payments.tef.Admin
-import br.com.phoebus.payments.tef.request.HealthCheckRequest
-import br.com.phoebus.payments.tef.request.InitializationRequest
-import br.com.phoebus.payments.tef.request.InstallationRequest
-import br.com.phoebus.payments.tef.request.SyncRequest
+import br.com.phoebus.payments.tef.TopRegister
+import br.com.phoebus.payments.tef.request.*
 import br.com.phoebus.payments.tef.response.HealthCheckResponse
 import br.com.phoebus.payments.ui.models.GroupInfo
 import br.com.phoebus.payments.ui.models.GroupInfoDetail
@@ -147,5 +145,28 @@ class AdminViewModel(
         delay(3000)
         _healthCheckResponse.value = response
         healthCheckFeedback.value = false
+    }
+
+    fun topRegister(
+        merchantEmail: String,
+        terminalPhoneNumber: String,
+        sucess: (() -> Unit)? = null,
+        fail: ((code: String, message: String) -> Unit)? = null
+    ) {
+        CoroutineScope(Dispatchers.Main).launch {
+            withContext(Dispatchers.Default) {
+                handleResult(
+                    TopRegister.execute(
+                        context,
+                        TopRegisterRequest(
+                            Identification.appIdentification,
+                            Identification.appCredentials,
+                            merchantEmail = merchantEmail,
+                            terminalPhoneNumber = terminalPhoneNumber
+                        )
+                    ), sucess, fail, _initialization
+                )
+            }
+        }
     }
 }

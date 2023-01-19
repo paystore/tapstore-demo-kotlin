@@ -24,7 +24,8 @@ abstract class GenericViewModel(
 
         when(response.result) {
             OperationResultEnum.SUCCESS -> {
-                if (Config.getStatus(Identification.basicRequest).value!! == ApplicationStatus.READY) {
+                if (Config.getStatus(Identification.basicRequest).value!! == ApplicationStatus.READY ||
+                    Config.getStatus(Identification.basicRequest).value!! == ApplicationStatus.NOT_CONFIGURED) {
                     viewModelScope.launch {
                         mutable?.let { it.value = true }
                     }
