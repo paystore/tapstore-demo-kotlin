@@ -30,6 +30,7 @@ import br.com.phoebus.payments.tef.request.BasicRequest
 import br.com.phoebus.payments_demo.ui.presentation.navigation.Navigation
 import br.com.phoebus.payments_demo.ui.presentation.screens.LoginScreen
 import br.com.phoebus.payments_demo.ui.presentation.screens.MainScreen
+import br.com.phoebus.payments_demo.ui.presentation.screens.SettingsScreen
 import br.com.phoebus.payments_demo.ui.presentation.screens.SplashScreen
 import br.com.phoebus.payments_demo.ui.theme.MainTheme
 import br.com.phoebus.payments_demo.utils.Identification
@@ -147,6 +148,9 @@ class MainActivity : FragmentActivity() {
                     }
                     composable(Navigation.LoginScreen.route) {
                         LoginScreen(navController!!, applicationContext)
+                    }
+                    composable(Navigation.SettingsScreen.route) {
+                        SettingsScreen(navController!!, applicationContext)
                     }
                 }
             }

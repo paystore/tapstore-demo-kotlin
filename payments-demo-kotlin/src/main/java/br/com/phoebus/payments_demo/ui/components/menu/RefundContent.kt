@@ -43,7 +43,6 @@ fun RefunContent(context: Context) {
                 date = item.date
             ) {
                 purchaseViewModel.cancelExecute(
-                    context = context,
                     payment = item,
                     sucess = {
                         UI.approvedScreen(

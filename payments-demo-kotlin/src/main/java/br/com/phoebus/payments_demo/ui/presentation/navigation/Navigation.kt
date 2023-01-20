@@ -4,5 +4,6 @@ sealed class Navigation (val route: String) {
     object Splash: Navigation("splash_screen")
     object MainScreen: Navigation("MainScreen")
     object LoginScreen: Navigation("LoginScreen")
+    object SettingsScreen: Navigation("SettingsScreen")
     object BiometricConfigScreen: Navigation("BiometricConfigScreen")
 }

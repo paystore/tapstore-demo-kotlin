@@ -12,32 +12,29 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import br.com.phoebus.payments.tef.BuildConfig
 import br.com.phoebus.payments_demo.BuildConfig.apiVersionName
 import br.com.phoebus.payments_demo.ui.components.ActionCard
 import br.com.phoebus.payments_demo.ui.components.menu.*
-import br.com.phoebus.payments_demo.ui.theme.Color
+import br.com.phoebus.payments_demo.ui.presentation.navigation.Navigation
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MainScreen(navController: NavController, context: Context) {
-
-    var reportState by remember {
-        mutableStateOf(false)
-    }
-    var testState by remember {
-        mutableStateOf(false)
-    }
-    var eraseState by remember {
-        mutableStateOf(false)
-    }
-
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("Demo") },
-                backgroundColor = Color.primary
+                backgroundColor = MaterialTheme.colors.primary,
+                actions = {
+                    IconButton(onClick = { navController.navigate(Navigation.SettingsScreen.route) }) {
+                        Icon(
+                            imageVector = Icons.Outlined.Settings,
+                            contentDescription = "Settings",
+                            tint = MaterialTheme.colors.background
+
+                        )
+                    }
+                }
             )
         },
         bottomBar = {

@@ -21,10 +21,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.util.*
 
 class PurchaseViewModel(
     application: Application
 ) : GenericViewModel(application) {
+
+    private val context = getApplication<Application>().applicationContext
 
     fun paymentExecute(
         context: Context,
@@ -95,7 +98,6 @@ class PurchaseViewModel(
     }
 
     fun cancelExecute(
-        context: Context,
         payment: Financial,
         sucess: ((cancel: Cancel) -> Unit)? = null,
         fail: ((code: String, message: String) -> Unit)? = null,
@@ -105,7 +107,7 @@ class PurchaseViewModel(
         CoroutineScope(Dispatchers.Default).launch {
             try {
                 val responseCancel: CancelResponse = Purchase.cancelExecute(
-                    context = context,
+                    context,
                     CancelRequest(
                         appIdentification,
                         appCredentials,
@@ -116,7 +118,8 @@ class PurchaseViewModel(
                                 payment.date
                             ),
                             productType = payment.productType,
-                            apiVersion = System.version()
+                            apiVersion = System.version(),
+                            trnsDateTime = Date()
                         )
                     )
                 )

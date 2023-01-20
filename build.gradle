@@ -26,6 +26,10 @@ allprojects {
         ext.kotlin_version = '1.5.21'
         coroutinesVersion = '1.6.1'
         gmsPlayServicesVersion = '18.0.0'
+        flowlayout = '0.20.0'
+        workVersion = "2.7.1"
+        glideVersion = '4.14.2'
+        glideComposeVersion = '2.0.3'
         berTlvVersion = '0.1.8'
         apiVersionName = "1.0.0"
         libraryName = "TapStore-api"
