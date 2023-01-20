@@ -68,7 +68,7 @@ fun Customization(navController: NavController, context: Context) {
                 UI.init(
                     context,
                     lightColors(
-                        primary = Color.primary,
+                        primary = controller.selectedColor.value,
                         primaryVariant = Color.primaryVariant,
                         onPrimary = Color.onPrimary,
                         secondary = Color.secondary,
@@ -81,7 +81,7 @@ fun Customization(navController: NavController, context: Context) {
                         onBackground = Color.onBackground,
                         onError = Color.onError
                     ),
-                    Color.primary,
+                    controller.selectedColor.value,
                     Color.primary,
                     Identification.basicRequest,
                     BuildConfig.BUILD_TYPE

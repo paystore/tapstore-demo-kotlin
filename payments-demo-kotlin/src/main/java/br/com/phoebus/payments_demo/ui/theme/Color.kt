@@ -18,7 +18,7 @@ object Color {
     val onBackground = Color(0xFF202020)
     val onError = Color(0xFFFFFFFF)
 
-    val MainPallete = lightColors(
+    var MainPallete = lightColors(
         primary = primary,
         primaryVariant = primaryVariant,
         onPrimary = onPrimary,

@@ -23,15 +23,22 @@ import androidx.navigation.NavHostController
 import br.com.phoebus.payments.config.ConfigModuleService
 import br.com.phoebus.payments.platform.Platform
 import br.com.phoebus.payments.ui.components.DefaultOutlineTextField
+import br.com.phoebus.payments_demo.ui.theme.Color
 
 @Composable
 fun SettingsScreen(navController: NavHostController, context: Context) {
     val checkedDevModeState = remember { mutableStateOf(Platform.getCheckDevMode()) }
     val checkedRootModeState = remember { mutableStateOf(Platform.getCheckRootMode()) }
-    var valueStartStateParamInitialize = remember { mutableStateOf(
-        ConfigModuleService.getPeriodUntilInitialize().toString()) }
-    var valueStartStateParamPurge = remember { mutableStateOf(
-        ConfigModuleService.getPeriodUntilPurge().toString()) }
+    var valueStartStateParamInitialize = remember {
+        mutableStateOf(
+            ConfigModuleService.getPeriodUntilInitialize().toString()
+        )
+    }
+    var valueStartStateParamPurge = remember {
+        mutableStateOf(
+            ConfigModuleService.getPeriodUntilPurge().toString()
+        )
+    }
     val maxCharParam = 2
     val stateScroll = rememberScrollState()
     val context: Context = LocalContext.current
@@ -40,7 +47,7 @@ fun SettingsScreen(navController: NavHostController, context: Context) {
         topBar = {
             TopAppBar(
                 title = { Text("Configurações da API ") },
-                backgroundColor = MaterialTheme.colors.primary,
+                backgroundColor = Color.primary,
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
@@ -107,7 +114,7 @@ fun SettingsScreen(navController: NavHostController, context: Context) {
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
 
-                        MaterialTheme.colors.primary,
+                        Color.primary,
                         focusedBorderColor = MaterialTheme.colors.primaryVariant
                     )
                 )
@@ -121,12 +128,21 @@ fun SettingsScreen(navController: NavHostController, context: Context) {
                 Button(modifier = Modifier
                     .padding(start = 5.dp, top = 5.dp),
                     onClick = {
-                        if(valueStartStateParamInitialize.value.toLong() > 15) {
-                            ConfigModuleService.setPeriodUntilInitialize(valueStartStateParamInitialize.value.toLong())
-                            Toast.makeText(context, "Valor alterado com sucesso!", Toast.LENGTH_SHORT).show()
-                        }
-                        else {
-                            Toast.makeText(context, "Valor abaixo do mínimo permitido (15)", Toast.LENGTH_SHORT).show()
+                        if (valueStartStateParamInitialize.value.toLong() > 15) {
+                            ConfigModuleService.setPeriodUntilInitialize(
+                                valueStartStateParamInitialize.value.toLong()
+                            )
+                            Toast.makeText(
+                                context,
+                                "Valor alterado com sucesso!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                context,
+                                "Valor abaixo do mínimo permitido (15)",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 ) {
@@ -159,8 +175,7 @@ fun SettingsScreen(navController: NavHostController, context: Context) {
                     },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
-
-                        MaterialTheme.colors.primary,
+                        Color.primary,
                         focusedBorderColor = MaterialTheme.colors.primaryVariant
                     )
                 )
@@ -175,7 +190,8 @@ fun SettingsScreen(navController: NavHostController, context: Context) {
                     .padding(start = 5.dp, top = 5.dp),
                     onClick = {
                         ConfigModuleService.setPeriodUntilPurge(valueStartStateParamPurge.value.toLong())
-                        Toast.makeText(context, "Valor alterado com sucesso!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Valor alterado com sucesso!", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 ) {
                     Text(text = "Alterar valor")

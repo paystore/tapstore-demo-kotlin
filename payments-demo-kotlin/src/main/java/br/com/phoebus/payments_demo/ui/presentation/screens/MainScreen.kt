@@ -16,6 +16,7 @@ import br.com.phoebus.payments_demo.BuildConfig.apiVersionName
 import br.com.phoebus.payments_demo.ui.components.ActionCard
 import br.com.phoebus.payments_demo.ui.components.menu.*
 import br.com.phoebus.payments_demo.ui.presentation.navigation.Navigation
+import br.com.phoebus.payments_demo.ui.theme.Color
 
 @Composable
 fun MainScreen(navController: NavController, context: Context) {
@@ -24,7 +25,7 @@ fun MainScreen(navController: NavController, context: Context) {
         topBar = {
             TopAppBar(
                 title = { Text("Demo") },
-                backgroundColor = MaterialTheme.colors.primary,
+                backgroundColor = Color.primary,
                 actions = {
                     IconButton(onClick = { navController.navigate(Navigation.SettingsScreen.route) }) {
                         Icon(
